@@ -11,8 +11,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Switch from '@mui/material/Switch';
+import FileUpload from './FileUpload'
 
-const ProjectForm = ({formData, setFormData, handleSubmit}) => {
+const ProjectForm = ({ formData, setFormData, handleSubmit }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,6 +55,10 @@ const ProjectForm = ({formData, setFormData, handleSubmit}) => {
     }))
   }
 
+  // const handleImagesUpload = ()=>{
+
+  // }
+
 
   return (
     <div className="form-box max-w-[400px]">
@@ -76,6 +81,11 @@ const ProjectForm = ({formData, setFormData, handleSubmit}) => {
               value={formData.description}
               onChange={handleChange}
             />
+            <FormControl sx={{ my: 2 }}>
+              <FormLabel className='mt-4 mb-2'>Upload Project Images</FormLabel>
+              <FileUpload setFormData={setFormData} />
+            </FormControl>
+
             <FormLabel id="demo-row-radio-buttons-group-label" className='mt-4'>Is it a Team Project?</FormLabel>
             <RadioGroup
               row
@@ -158,8 +168,10 @@ const ProjectForm = ({formData, setFormData, handleSubmit}) => {
             <TextField id="outlined-basic" name='githubLink' value={formData.githubLink} onChange={handleChange} label="Project Github Link (optional)" variant="outlined" />
             <TextField id="outlined-basic" name='hostedLink' value={formData.hostedLink} onChange={handleChange} label="Project Hosted Link (optional)" variant="outlined" />
           </FormControl>
+          <FormControl fullWidth>
+            <Button type='submit' variant="contained" className='w-max' sx={{ my: 2, ml: 'auto' }}>Create Project</Button>
+          </FormControl>
         </Box>
-        <Button type='submit' variant="contained" className='float-end' sx={{ my: 2 }}>Create Project</Button>
       </form>
 
     </div>

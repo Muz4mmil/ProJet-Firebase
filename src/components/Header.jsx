@@ -11,6 +11,7 @@ const Header = () => {
           <li><Link to={'/explore'}>Explore</Link></li>
           <li><Link to={'/profile'}>Profile</Link></li>
           <li><Link to={'/upload'}>Upload</Link></li>
+          <li><Link to={'/login'}>Login</Link></li>
         </ul>
       </nav>
 
