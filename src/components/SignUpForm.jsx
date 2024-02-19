@@ -104,15 +104,14 @@ export default function SignUp({handleSignUp}) {
               Sign Up
             </Button>
             <Grid container justifyContent="flex-end">
-              <Grid item>
+              <Grid item >
                 <RouteLink to="/login">
-                  Already have an account? Sign in
+                  Already have an account? <span className='text-blue-700 font-medium'> Sign in</span>
                 </RouteLink>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
   );
 }

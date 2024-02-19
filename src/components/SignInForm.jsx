@@ -94,13 +94,12 @@ export default function SignInForm({ handleSignIn }) {
             </Grid> */}
             <Grid item>
               <RouteLink to="/signup" >
-                {"Don't have an account? Sign Up"}
+                Don't have an account?  <span className='text-blue-700 font-medium'> Sign Up</span>
               </RouteLink>
             </Grid>
           </Grid>
         </Box>
       </Box>
-      <Copyright sx={{ mt: 5 }} />
     </Container>
   );
 }

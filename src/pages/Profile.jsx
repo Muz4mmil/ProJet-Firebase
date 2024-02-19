@@ -1,60 +1,95 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Logout from '../components/Logout'
-import { collection, getDocs, onSnapshot, query, where } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { collection, doc, getDoc, getDocs, onSnapshot, query, where } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 import { db } from '../firebase-configs';
 import Grid from '@mui/material/Grid';
+import Avatar from '@mui/material/Avatar';
 import ProjectCard from '../components/ProjectCard'
 import AuthHelper from '../components/AuthHelper';
+import CardsContainer from '../components/CardsContainer'
 
-const Profile = ({ user }) => {
-
+const Profile = () => {
+  const user = useSelector((state) => state.user);
   const [projects, setProjects] = useState([])
+  const [tab, setTab] = useState('mine')
 
   const projectsRef = collection(db, 'projects')
 
   useEffect(() => {
-    if(user){
-      console.log(user);
-      const queryProjects = query(projectsRef, where('owner', '==', user.uid))
-      const unsubscribe = onSnapshot(queryProjects, (snapshot) => {
-        const projects = snapshot.docs.map(doc => ({id: doc.id, ...doc.data()}))
-        setProjects(projects)
-      })
-      return () => unsubscribe()
+    console.log('currentTab: ' + tab);
+    if (user) {
+      if (tab == 'mine') {
+        const queryProjects = query(projectsRef, where('owner', '==', user.uid))
+        const unsubscribe = onSnapshot(queryProjects, (snapshot) => {
+          const projects = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+          setProjects(projects)
+        })
+        return () => unsubscribe()
+      }
+      else if (tab == 'saved') {
+        const userDocRef = doc(db, "users", user.uid);
+        const unsubscribe = onSnapshot(userDocRef, async (docSnap) => {
+          const docData = docSnap.data()
+          const savedProjects = docData.saved
+          console.log('savedProjects');
+          console.log(savedProjects);
+
+          let projects = []
+          for (const projectId of savedProjects) {
+            const ProjectDocRef = doc(db, "projects", projectId);
+            const ProjectdocSnap = await getDoc(ProjectDocRef);
+            const ProjectdocData = ProjectdocSnap.data()
+            projects.push({ id: projectId, ...ProjectdocData })
+          }
+          setProjects(projects)
+          console.log('end');
+        })
+        return () => unsubscribe()
+      }
     }
-    // const querySnapshot = await getDocs(projectsRef)
-  }, [])
+  }, [tab])
 
 
   return (
     user ? (
+      <div className='w-[80%] mx-auto'>
+        <h1 className='my-10 text-3xl font-poppins font-medium'>Profile</h1>
+        <div className='flex gap-16 max-sm:gap-10'>
+          <div>
+            <Avatar
+              alt="Remy Sharp"
+              src="/static/images/avatar/1.jpg"
+              sx={{ width: '100px', height: '100px', fontSize: '40px' }}
+              >{user.displayName[0]}</Avatar>
+          </div>
+          <div className="user-info">
+            {user && (<>
+              <h4 className='text-4xl font-bold'>{user.displayName}</h4>
+              <h4 className='mt-2 text-xl'>{user.email}</h4>
+            </>)}
+          </div>
+        </div>
 
-    <div className='w-[80%] mx-auto'>
-      <h1 className='my-16 text-3xl font-montserrat font-medium'>Profile</h1>
-      <div className="user-info">
-        {user && (<>
-          <h4>{user.displayName}</h4>
-          <h4>{user.uid}</h4>
-          <h4>{user.email}</h4>
-        </>)}
         <Logout />
-      </div>
-      <div className="my-projects">
-        <h1 className='my-16 text-3xl font-montserrat font-medium'>My Projects</h1>
-        <div className="project-container">
-          <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-            {projects.map((project, index) => (
-              <Grid item xs={4} sm={4} md={4} key={index}>
-                <Link to={`/explore/project/${project.id}`}>
-                  <ProjectCard project={project} />
-                </Link>
-              </Grid>
-            ))}
-          </Grid>
+
+        <div className="projects">
+          <div className="tabs my-16 flex gap-8 items-end">
+            <div
+              className={`cursor-pointer w-44 h-10 flex items-end font-poppins font-medium duration-100 ${tab == 'mine' ? 'text-black text-3xl' : 'text-slate-700 text-xl'}`}
+              onClick={() => setTab('mine')}
+            >My Projects</div>
+            <div
+              className={`cursor-pointer w-28 h-10 flex items-end font-poppins font-medium duration-100 ${tab == 'saved' ? 'text-black text-3xl' : 'text-slate-700 text-xl'}`}
+              onClick={() => setTab('saved')}
+            >Saved</div>
+          </div>
+          <div>
+            <CardsContainer projects={projects} />
+          </div>
         </div>
       </div>
-    </div>
     ) : (<AuthHelper />)
   )
 }

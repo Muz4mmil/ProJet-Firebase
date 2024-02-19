@@ -19,8 +19,8 @@ const Logout = () => {
   }
 
   return (
-    <div>
-      <Button onClick={handleLogout}>Logout</Button>
+    <div className=' ml-[164px] max-sm:ml-[140px]'>
+      <Button variant='contained' size='small' onClick={handleLogout}>Logout</Button>
     </div>
   )
 }

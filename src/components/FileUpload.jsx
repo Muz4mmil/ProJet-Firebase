@@ -56,7 +56,7 @@ export default function FileUpload({ setFormData }) {
     // startIcon={<CloudUploadIcon />}
     >
       Upload files
-      <VisuallyHiddenInput type="file" multiple onChange={handleFilesUpload} />
+      <VisuallyHiddenInput type="file" accept="image/*" multiple onChange={handleFilesUpload} />
     </Button>
   );
 }
