@@ -60,7 +60,7 @@ const Profile = () => {
           <div>
             <Avatar
               alt="Remy Sharp"
-              src="/static/images/avatar/1.jpg"
+              src={user.photoURL}
               sx={{ width: '100px', height: '100px', fontSize: '40px' }}
               >{user.displayName[0]}</Avatar>
           </div>

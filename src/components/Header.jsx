@@ -20,12 +20,12 @@ const Header = () => {
         {isExpanded ? <CloseIcon /> : <MenuIcon />}
       </button>
 
-      <div class=" nav-links col-span-2 lg:col-span-2 lg:flex lg:justify-end">
-        <ul class="lg:flex lg:items-center lg:space-x-8 max-sm:space-y-4 max-sm:mt-6 font-medium text-gray-900">
+      <div class="nav-links lg:mt-0 md:mt-4 col-span-2 lg:col-span-2 lg:flex lg:justify-end">
+        <ul class="lg:flex lg:items-center lg:space-x-8 max-lg:space-y-4 max-md:mt-6 font-medium text-gray-900">
           <li><Link to={'/'}>Home</Link></li>
           <li><Link to={'/explore'}>Explore</Link></li>
-          {/* <li><Link to={'/profile'}>Profile</Link></li> */}
-          {user && <li><Link to={`/profile/${user.uid}`}>Profile</Link></li>}
+          <li><Link to={'/profile/me'}>Profile</Link></li>
+          {/* {user && <li><Link to={`/profile/${user.uid}`}>Profile</Link></li>} */}
           <li><Link to={'/upload'}>Upload</Link></li>
           {!user && <li><Link to={'/login'}><Button variant='outlined' size='small'>Login</Button></Link></li>}
         </ul>

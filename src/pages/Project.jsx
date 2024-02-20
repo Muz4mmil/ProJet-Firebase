@@ -3,21 +3,31 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { collection, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 import { db } from '../firebase-configs';
-
+import PersonIcon from '@mui/icons-material/Person';
+import CategoryIcon from '@mui/icons-material/Category';
+import LinkIcon from '@mui/icons-material/Link';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 
 const Project = () => {
   const user = useSelector((state) => state.user);
 
   const { projectId } = useParams()
   const [project, setProject] = useState()
+  const [projectOwner, setProjectOwner] = useState()
 
   const projectRef = doc(db, 'projects', projectId)
 
   useEffect(() => {
     const unsubscribe = async () => {
       const project = await getDoc(projectRef);
-      const projectData = project.data()
+      const projectData = await project.data()
       setProject(projectData)
+
+      const userRef = doc(db, 'users', projectData.owner)
+      const owner = await getDoc(userRef);
+      const ownerData = await owner.data()
+      setProjectOwner(ownerData)
     }
 
     return () => unsubscribe();
@@ -26,18 +36,21 @@ const Project = () => {
 
   return (
     <div className='w-[80%] my-6 mx-auto'>
-      {project ? (
+      {project && projectOwner ? (
         <>
-          <div className="images my-6 flex gap-4 overflow-x-scroll">
-            {
-              project.projectImagesURLs.map((url, index) => (
-                <img key={index} src={url} className='h-72 object-cover' />
-              ))
-            }
+          <div className="images max-w-max my-6 flex gap-4 overflow-x-scroll">
+            {project.projectImagesURLs.map((url, index) => (
+              <img key={index} src={url} className='max-h-72 object-cover mb-2' />
+            ))}
           </div>
+
           <div className="info">
-            <h1 className='my-6 text-3xl font-poppins font-medium'>{project.name}</h1>
-            <p>{project.ownerName || 'unknown'} | {project.category}</p>
+            <h1 className='my-4 text-3xl font-poppins font-medium'>{project.name}</h1>
+            <div className='flex gap-5'>
+              <p className=' flex items-center gap-2'><PersonIcon/>{projectOwner.displayName || 'unknown'}</p>
+              <p>|</p>
+              <p className=' flex items-center gap-2'><CategoryIcon/>{project.category}</p>
+            </div>
             <h5 className='mt-8 mb-1 text-xl font-bold font-poppins'>Description:</h5>
             <p className=''>{project.description}</p>
             {
@@ -54,7 +67,7 @@ const Project = () => {
             }
             {
               project.isOrganisationProject && (<>
-                <h5 className='mt-8 mb-1 text-xl font-bold font-poppins'>Organisation:</h5>
+                <h5 className='mt-8 mb-1 text-xl font-bold font-poppins'>College / Organisation:</h5>
                 <p>{project.organisation}</p>
               </>)
             }
@@ -62,15 +75,17 @@ const Project = () => {
               (project.githubLink || project.hostedLink) && (<>
                 <h5 className='mt-8 mb-1 text-xl font-bold font-poppins'>Links:</h5>
                 {project.hostedLink && (<>
-                  <p>Link : <a href={project.hostedLink}>{project.hostedLink}</a></p>
+                  <p className='mb-2 flex items-center gap-2'><LinkIcon/>Link : <a href={project.hostedLink} className='text-sky-700 ml-2'>{project.hostedLink}</a></p>
 
                 </>)}
                 {project.githubLink && (<>
-                  <p>GitHub : <a href={project.githubLink}>{project.githubLink}</a></p>
+                  <p className='mb-2 flex items-center gap-2'><GitHubIcon/>GitHub : <a href={project.githubLink} className='text-sky-700 ml-2'>{project.githubLink}</a></p>
 
                 </>)}
               </>)
             }
+            <h5 className='mt-8 mb-1 text-xl font-bold font-poppins'>Contact:</h5>
+            <p className='mb-2 flex items-center gap-2'><AlternateEmailIcon/>Email : {projectOwner.email}</p>
           </div>
         </>) : (<>Loading...</>)}
     </div>

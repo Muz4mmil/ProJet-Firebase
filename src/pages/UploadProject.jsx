@@ -16,7 +16,6 @@ const UploadProject = () => {
     projectImagesURLs: [],
     category: '',
     owner: user ? user.uid : null,
-    ownerName :  user ? user.name : null,
     teamType: 'solo',
     teamMembers: [],
     isOrganisationProject: false,

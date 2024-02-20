@@ -1,0 +1,19 @@
+.images::-webkit-scrollbar {
+    height: 4px;
+}
+
+@media (min-width: 768px) {
+    .images::-webkit-scrollbar {
+        height: 8px;
+    }
+}
+
+.images::-webkit-scrollbar-track {
+    background: #e9e8e8;
+    border-radius: 4px;
+}
+
+.images::-webkit-scrollbar-thumb {
+    background: rgba(100, 116, 139, 0.473);
+    border-radius: 4px;
+}

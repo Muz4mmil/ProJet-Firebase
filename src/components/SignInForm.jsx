@@ -11,6 +11,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import GoogleIcon from '@mui/icons-material/Google';
 
 function Copyright(props) {
   return (
@@ -26,7 +27,7 @@ function Copyright(props) {
 }
 
 
-export default function SignInForm({ handleSignIn }) {
+export default function SignInForm({ handleSignIn, handleGoogleSignIn }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -74,10 +75,6 @@ export default function SignInForm({ handleSignIn }) {
             id="password"
             autoComplete="current-password"
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
           <Button
             type="submit"
             fullWidth
@@ -86,7 +83,7 @@ export default function SignInForm({ handleSignIn }) {
           >
             Sign In
           </Button>
-          <Grid container>
+          <Grid container justifyContent="center">
             {/* <Grid item xs>
               <Link to="#" variant="body2">
                 Forgot password?
@@ -99,6 +96,16 @@ export default function SignInForm({ handleSignIn }) {
             </Grid>
           </Grid>
         </Box>
+        <hr className='border-gray-400 border-t w-1/2 my-5' />
+        <Button
+          fullWidth
+          variant="outlined"
+          size="large"
+          sx={{ fontSize: '16px', fontFamily: 'Poppins', textTransform: 'none' }}
+          startIcon={<GoogleIcon />}
+          onClick={handleGoogleSignIn}>
+          Login with Google
+        </Button>
       </Box>
     </Container>
   );
