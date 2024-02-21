@@ -32,8 +32,8 @@ const UploadProject = () => {
     try {
       const docRef = await addDoc(projectRef, formData);
       console.log('Document written with ID: ', docRef.id);
-      setTimeout(()=>{
-        navigate('/profile')
+      setTimeout(() => {
+        navigate(`/explore/project/${project.id}`)
       }, 1000)
     } catch (e) {
       console.error('Error adding document: ', e);
@@ -42,9 +42,14 @@ const UploadProject = () => {
 
   return (
     user ? (
-      <div className='w-[80%] mx-auto'>
-        <h1 className='my-16 text-3xl font-poppins font-medium'>Upload New Project</h1>
-        <ProjectForm formData={formData} setFormData={setFormData} handleSubmit={handleSubmit} />
+      <div className='w-[80%] mx-auto flex justify-between'>
+        <div className=''>
+          <h1 className='my-16 text-3xl font-poppins font-medium'>Upload New Project</h1>
+          <ProjectForm formData={formData} setFormData={setFormData} handleSubmit={handleSubmit} />
+        </div>
+        <div className='hidden w-[50%] h-full mt-40 lg:flex items-center'>
+          <img src="/assets/upload3.png" alt="upload" />
+        </div>
       </div >
     ) : (<AuthHelper />)
   )

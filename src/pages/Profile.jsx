@@ -6,6 +6,8 @@ import { collection, doc, getDoc, getDocs, onSnapshot, query, where } from "http
 import { db } from '../firebase-configs';
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
+import ShareIcon from '@mui/icons-material/Share';
+import { Button } from '@mui/material';
 import ProjectCard from '../components/ProjectCard'
 import AuthHelper from '../components/AuthHelper';
 import CardsContainer from '../components/CardsContainer'
@@ -62,13 +64,31 @@ const Profile = () => {
               alt="Remy Sharp"
               src={user.photoURL}
               sx={{ width: '100px', height: '100px', fontSize: '40px' }}
-              >{user.displayName[0]}</Avatar>
+            >{user.displayName[0]}</Avatar>
           </div>
           <div className="user-info">
             {user && (<>
               <h4 className='text-4xl font-bold'>{user.displayName}</h4>
-              <h4 className='mt-2 text-xl'>{user.email}</h4>
+              <h4 className='mt-2 text-xs'>{user.email}</h4>
             </>)}
+
+            <div className='flex gap-2 item-center my-6'>
+              <ShareIcon/>
+              <Button
+                variant='outlined'
+                size='small'
+                sx={{ width: 'max-content' }}
+                onClick={(e) => {
+                  navigator.clipboard.writeText(`https://projet-app.web.app/profile/${user.uid}`);
+                  e.target.innerHTML = 'Link Copied';
+                  setTimeout(() => {
+                    e.target.innerHTML = "Share Profile";
+                  }, 1500)
+                }}
+              >
+                Share Profile
+              </Button>
+            </div>
           </div>
         </div>
 

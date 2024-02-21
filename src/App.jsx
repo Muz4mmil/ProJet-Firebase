@@ -30,7 +30,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className='bg-slate-50 min-h-[100svh] relative pb-20'>
+    <div className='bg-slate-50 min-h-[100dvh] relative pb-20'>
       <BrowserRouter>
         <Header />
         <Routes>

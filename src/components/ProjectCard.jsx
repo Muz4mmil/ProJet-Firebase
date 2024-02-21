@@ -52,8 +52,9 @@ const ProjectCard = ({ project }) => {
       <CardMedia
         component="img"
         height="140"
-        image="/1.jpg"
-        alt="green iguana"
+        image={project.projectImagesURLs[0] || '/assets/images.png'}
+        alt="Project-image"
+        className='object-cover h-[160px]'
       />
 
       <Link to={`/explore/project/${project.id}`} >

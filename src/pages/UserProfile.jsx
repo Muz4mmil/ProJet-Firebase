@@ -45,12 +45,12 @@ const UserProfile = () => {
           <div>
             <Avatar
               alt="Remy Sharp"
-              src="/static/images/avatar/1.jpg"
+              src={viewUser.photoURL}
               sx={{ width: '100px', height: '100px', fontSize: '40px' }}
-            >{user.displayName[0]}</Avatar>
+            >{viewUser.displayName[0]}</Avatar>
           </div>
           <div className="user-info">
-            {user && (<>
+            {viewUser && (<>
               <h4 className='text-4xl font-bold'>{viewUser.displayName}</h4>
               <h4 className='mt-2 text-xl'>{viewUser.email}</h4>
             </>)}
