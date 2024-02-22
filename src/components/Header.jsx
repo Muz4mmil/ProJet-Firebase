@@ -4,6 +4,10 @@ import { useSelector } from 'react-redux'
 import { Button } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import HomeIcon from '@mui/icons-material/Home';
+import ExploreIcon from '@mui/icons-material/Explore';
+import PersonIcon from '@mui/icons-material/Person';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 const Header = () => {
   const user = useSelector((state) => state.user)
@@ -11,22 +15,42 @@ const Header = () => {
 
   return (
     <header
-    className={`header bg-white w-full grid grid-cols-2 lg:grid-cols-3 items-center py-4 px-[10%] max-h-16 overflow-hidden transition-all duration-500 lg:max-h-full ${isExpanded && 'max-h-96'}`}>
-      <div className="logo text-3xl font-bold w-max">{'<'}ProJet{' />'}</div>
+      className={`header bg-white w-full flex justify-between items-center py-4 lg:px-[10%] max-h-16 transition-all duration-500 lg:max-h-full ${isExpanded && 'max-h-96'}`}>
+      <div className="logo text-3xl font-bold w-max max-sm:text-center max-sm:w-full">{'<'}ProJet{' />'}</div>
 
-      <button className="lg:hidden col-span-1 justify-self-end"
-        onClick={()=>setIsExpanded(!isExpanded)}
+      {/* <button className="lg:hidden max-sm:hidden col-span-1 justify-self-end"
+        onClick={() => setIsExpanded(!isExpanded)}
       >
         {isExpanded ? <CloseIcon /> : <MenuIcon />}
-      </button>
+      </button> */}
 
-      <div class="nav-links lg:mt-0 md:mt-4 col-span-2 lg:col-span-2 lg:flex lg:justify-end">
-        <ul class="lg:flex lg:items-center lg:space-x-8 max-lg:space-y-4 max-md:mt-6 font-medium text-gray-900">
-          <li><Link to={'/'}>Home</Link></li>
-          <li><Link to={'/explore'}>Explore</Link></li>
-          <li><Link to={'/profile/me'}>Profile</Link></li>
+      <div class="nav-links z-10 bg-white max-sm:fixed max-sm:bottom-0 max-sm:z-10 max-sm:w-full max-sm:border-t">
+        <ul class="lg:flex max-sm:py-3 max-sm:flex max-sm:justify-evenly items-center lg:space-x-8 font-medium text-gray-900">
+          <li  className=' max-sm:text-xs'><Link to={'/'}>
+            <div className='text-center hidden max-sm:block'>
+              <HomeIcon />
+            </div>
+            <p>Home</p>
+          </Link></li>
+          <li  className=' max-sm:text-xs'><Link to={'/explore'}>
+            <div className='text-center hidden max-sm:block'>
+              <ExploreIcon />
+            </div>
+            <p>Explore</p>
+          </Link></li>
+          <li  className=' max-sm:text-xs'><Link to={'/profile/me'}>
+            <div className='text-center hidden max-sm:block'>
+              <PersonIcon />
+            </div>
+            <p>Profile</p>
+          </Link></li>
           {/* {user && <li><Link to={`/profile/${user.uid}`}>Profile</Link></li>} */}
-          <li><Link to={'/upload'}>Upload</Link></li>
+          <li  className=' max-sm:text-xs'><Link to={'/upload'}>
+            <div className='text-center hidden max-sm:block'>
+              <CloudUploadIcon />
+            </div>
+            <p>Upload</p>
+          </Link></li>
           {!user && <li><Link to={'/login'}><Button variant='outlined' size='small'>Login</Button></Link></li>}
         </ul>
       </div>

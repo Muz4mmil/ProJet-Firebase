@@ -23,7 +23,7 @@ const Explore = () => {
 
   const user = useSelector((state) => state.user);
   return (
-    <div className='w-max mx-auto'>
+    <div className='w-[80%] mx-auto'>
       <h1 className='my-16 text-3xl font-poppins font-medium'>Explore</h1>
       <CardsContainer projects={projects}/>
     </div>
