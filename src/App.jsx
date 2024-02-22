@@ -19,6 +19,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('ProJet - Made by Muzammil (https://muz4mmil.vercel.app)')
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch({ type: 'SET_USER', payload: user });
