@@ -66,12 +66,11 @@ const ProjectCard = ({ project }) => {
             variant="body2"
             color="text.secondary"
             sx={{
-              // height: 60,
               overflow: 'hidden',
               textOverflow: 'ellipsis',
               display: '-webkit-box',
               WebkitBoxOrient: 'vertical',
-              WebkitLineClamp: 3, // Limit to 3 lines
+              WebkitLineClamp: 3,
             }}
           >
             {project.description}
@@ -79,10 +78,10 @@ const ProjectCard = ({ project }) => {
         </CardContent>
       </Link>
       <CardActions sx={{ position: 'absolute', top: 0, right: 0 }}>
-        {/* <Button size="small" sx={{ padding: 0, color: 'black', margin: 0 }}> */}
-        <button onClick={handleSave} className='p-[6px] text-3xl flex item-center justify-center rounded-full bg-white'>
-          { isSaved ? <BookmarkIcon/> : <BookmarkBorderIcon/>}
-        </button>
+        {user && <button onClick={handleSave} className='p-[6px] text-3xl flex item-center justify-center rounded-full bg-white'>
+          {isSaved ? <BookmarkIcon /> : <BookmarkBorderIcon />}
+        </button>}
+
 
         {/* </Button> */}
       </CardActions>

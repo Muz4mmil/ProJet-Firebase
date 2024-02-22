@@ -29,12 +29,15 @@ const Signup = () => {
               saved: []
             })
 
-            navigate('/profile/me')
+            if(user){
+              navigate('/profile/me')
+            }
           })
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorMessage);
+            alert(errorMessage);
           });
       })
       .catch((error) => {
@@ -64,13 +67,16 @@ const Signup = () => {
           saved: []
         })
 
-        navigate('/profile/me')
+        if(user){
+          navigate('/profile/me')
+        }
 
       }).catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage);
+        alert(errorMessage);
         // The email of the user's account used.
         const email = error.customData.email;
         // The AuthCredential type that was used.

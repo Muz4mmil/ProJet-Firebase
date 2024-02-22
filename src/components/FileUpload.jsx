@@ -20,10 +20,12 @@ const VisuallyHiddenInput = styled('input')({
 export default function FileUpload({ setFormData }) {
 
   const [files, setFiles] = useState([])
+  const [isUploading, setIsUploading] = useState(false)
   const handleFilesUpload = async (e) => {
     const files = e.target.files;
     setFiles(files)
-
+    
+    setIsUploading(true)
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       const storageRef = ref(storage, `projectImages/${file.name}`)
@@ -37,7 +39,7 @@ export default function FileUpload({ setFormData }) {
         },
         (snapshot) => {
           getDownloadURL(uploadTask.task.snapshot.ref).then((downloadURL) => {
-            setFormData((prev)=>({
+            setFormData((prev) => ({
               ...prev,
               projectImagesURLs: [...prev.projectImagesURLs, downloadURL],
             }))
@@ -45,18 +47,24 @@ export default function FileUpload({ setFormData }) {
         }
       );
     }
+    
+    document.getElementById('upload-helper').innerHTML = 'Uploaded'
+    document.getElementById('upload-helper').style.color = 'green'
   }
 
   return (
-    <Button
-      component="label"
-      role={undefined}
-      variant="outlined"
-      tabIndex={-1}
-    // startIcon={<CloudUploadIcon />}
-    >
-      Upload files
-      <VisuallyHiddenInput type="file" accept="image/*" multiple onChange={handleFilesUpload} />
-    </Button>
+    <>
+      <Button
+        component="label"
+        role={undefined}
+        variant="outlined"
+        tabIndex={-1}
+      // startIcon={<CloudUploadIcon />}
+      >
+        Upload files
+        <VisuallyHiddenInput type="file" accept="image/*" multiple onChange={handleFilesUpload} />
+      </Button>
+      {isUploading && (<p id='upload-helper' className='mt-1 text-sm'>Uploading...</p>)}
+    </>
   );
 }

@@ -84,6 +84,7 @@ const ProjectForm = ({ formData, setFormData, handleSubmit }) => {
           <FormLabel id="demo-row-radio-buttons-group-label" className='mt-4'>Is it a Team Project?</FormLabel>
           <RadioGroup
             row
+            required
             aria-labelledby="demo-row-radio-buttons-group-label"
             name='teamType'
             value={formData.teamType}
@@ -133,6 +134,7 @@ const ProjectForm = ({ formData, setFormData, handleSubmit }) => {
             <FormControl sx={{ my: 2, width: 260 }}>
               <InputLabel id="category-select-label">Select Category</InputLabel>
               <Select
+                required
                 aria-labelledby="select-form-label"
                 labelId="category-select-label"
                 id="demo-simple-select"

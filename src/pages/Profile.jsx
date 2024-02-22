@@ -69,7 +69,7 @@ const Profile = () => {
           <div className="user-info">
             {user && (<>
               <h4 className='text-4xl font-bold'>{user.displayName}</h4>
-              <h4 className='mt-2 text-xs'>{user.email}</h4>
+              <h4 className='mt-2 break-all max-sm:text-xs'>{user.email}</h4>
             </>)}
 
             <div className='flex gap-2 item-center my-6'>
@@ -97,11 +97,11 @@ const Profile = () => {
         <div className="projects">
           <div className="tabs my-16 flex gap-8 items-end">
             <div
-              className={`cursor-pointer w-44 h-10 flex items-end font-poppins font-medium duration-100 ${tab == 'mine' ? 'text-black text-3xl' : 'text-slate-700 text-xl'}`}
+              className={`cursor-pointer w-44 h-10 flex items-end font-poppins font-medium duration-100 ${tab == 'mine' ? 'text-black text-3xl max-sm:text-2xl' : 'text-slate-700 text-xl max-sm:text-lg'}`}
               onClick={() => setTab('mine')}
             >My Projects</div>
             <div
-              className={`cursor-pointer w-28 h-10 flex items-end font-poppins font-medium duration-100 ${tab == 'saved' ? 'text-black text-3xl' : 'text-slate-700 text-xl'}`}
+              className={`cursor-pointer w-28 h-10 flex items-end font-poppins font-medium duration-100 ${tab == 'saved' ? 'text-black text-3xl max-sm:text-2xl' : 'text-slate-700 text-xl max-sm:text-lg'}`}
               onClick={() => setTab('saved')}
             >Saved</div>
           </div>

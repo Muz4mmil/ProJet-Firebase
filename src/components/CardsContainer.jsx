@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 const CardsContainer = ({ projects }) => {
 
     return (
+        projects.length > 0 ? 
         <div className='w-[80vw] mx-auto'>
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 {projects.map((project, index) => (
@@ -15,7 +16,7 @@ const CardsContainer = ({ projects }) => {
                     </Grid>
                 ))}
             </Grid>
-        </div>
+        </div> : <div className='text-center'>No Projects Found</div>
     )
 }
 

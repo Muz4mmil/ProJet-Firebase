@@ -37,7 +37,7 @@ const Project = () => {
 
 
   return (
-    <div className='w-[80%] my-6 mx-auto'>
+    <div className='lg:w-[80%] w-[90%] my-6 mx-auto'>
       {project && projectOwner ? (
         <>
           <div className="images max-w-max my-6 flex gap-4 overflow-x-scroll">
@@ -48,7 +48,7 @@ const Project = () => {
 
           <div className="info">
             <h1 className='my-4 text-3xl font-poppins font-medium'>{project.name}</h1>
-            <div className='flex gap-5'>
+            <div className='flex gap-5 items-center'>
               <p className=' flex items-center gap-2'><PersonIcon />{projectOwner.displayName || 'unknown'}</p>
               <p>|</p>
               <p className=' flex items-center gap-2'><CategoryIcon />{project.category}</p>
@@ -74,15 +74,16 @@ const Project = () => {
               </>)
             }
             {
-              (project.githubLink || project.hostedLink) && (<>
+              (project.githubLink || project.githubLink) && (<>
                 <h5 className='mt-8 mb-1 text-xl font-bold font-poppins'>Links:</h5>
-                {project.hostedLink && (<>
-                  <p className='mb-2 flex items-center gap-2'><LinkIcon />Link : <a href={project.hostedLink.startsWith('https://') ? project.hostedLink : 'https://' + project.hostedLink} className='text-sky-700 ml-2' target='_blank'>{project.hostedLink}</a></p>
-
-                </>)}
-                {project.githubLink && (<>
-                  <p className='mb-2 flex items-center gap-2'><GitHubIcon />GitHub : <a href={project.githubLink.startsWith('https://') ? project.githubLink : 'https://' + project.githubLink} className='text-sky-700 ml-2' target='_blank'>{project.githubLink}</a></p>
-                </>)}
+                {project.hostedLink && (<div className='flex items-start mt-2'>
+                  <p className='mb-2 flex items-center gap-2 whitespace-nowrap'><LinkIcon />Link : </p>
+                  <a href={project.hostedLink.startsWith('https://') ? project.hostedLink : 'https://' + project.hostedLink} className='text-sky-700 ml-2 break-all' target='_blank'>{project.hostedLink}</a>
+                </div>)}
+                {project.githubLink && (<div className='flex items-start mt-2'>
+                  <p className='mb-2 flex items-center gap-2 whitespace-nowrap'><GitHubIcon />Github : </p>
+                  <a href={project.githubLink.startsWith('https://') ? project.githubLink : 'https://' + project.githubLink} className='text-sky-700 ml-2 break-all' target='_blank'>{project.githubLink}</a>
+                </div>)}
               </>)
             }
             <h5 className='mt-8 mb-1 text-xl font-bold font-poppins'>Contact:</h5>
@@ -95,7 +96,7 @@ const Project = () => {
                 size='small'
                 sx={{ width: 'max-content' }}
                 onClick={(e) => {
-                  navigator.clipboard.writeText(`https://projet-app.web.app/explore/project/${project.id}`);
+                  navigator.clipboard.writeText(`https://projet-app.web.app/explore/project/${projectId}`);
                   e.target.innerHTML = 'Link Copied';
                   setTimeout(() => {
                     e.target.innerHTML = "Share Project Link";
