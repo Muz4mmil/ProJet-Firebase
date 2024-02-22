@@ -38,7 +38,7 @@ const Project = () => {
 
   return (
     <div className='w-[80%] my-6 mx-auto'>
-      {project && projectOwner ? (
+      {project ? (
         <>
           <div className="images max-w-max my-6 flex gap-4 overflow-x-scroll">
             {project.projectImagesURLs.map((url, index) => (
