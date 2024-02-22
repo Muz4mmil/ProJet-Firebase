@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { collection, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 import { db } from '../firebase-configs';
 import PersonIcon from '@mui/icons-material/Person';
@@ -25,7 +25,7 @@ const Project = () => {
       const project = await getDoc(projectRef);
       const projectData = await project.data()
       setProject(projectData)
-      
+
       const userRef = doc(db, 'users', projectData.owner)
       const owner = await getDoc(userRef);
       const ownerData = await owner.data()
@@ -49,7 +49,10 @@ const Project = () => {
           <div className="info">
             <h1 className='my-4 text-3xl font-poppins font-medium'>{project.name}</h1>
             <div className='flex gap-5 items-center'>
-              <p className=' flex items-center gap-2'><PersonIcon />{projectOwner.displayName || 'unknown'}</p>
+              {projectOwner &&
+                <Link to={`/profile/${projectOwner.uid}`}>
+                  <p className='flex items-center gap-2 hover:text-sky-700'><PersonIcon />{projectOwner.displayName || 'unknown'}</p>
+                </Link>}
               <p>|</p>
               <p className=' flex items-center gap-2'><CategoryIcon />{project.category}</p>
             </div>
@@ -90,7 +93,7 @@ const Project = () => {
             <p className='mb-2 flex items-center gap-2'><AlternateEmailIcon />Email : {projectOwner.email}</p>
 
             <div className='flex gap-4 item-center mt-10'>
-              <ShareIcon/>
+              <ShareIcon />
               <Button
                 variant='outlined'
                 size='small'

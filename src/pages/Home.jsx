@@ -18,12 +18,19 @@ const Home = () => {
         </div>
 
         <div className="buttons mt-2 flex gap-4">
-          <Link to='/signup'>
-            <Button variant='outlined'>Signup</Button>
-          </Link>
-          <Link to='/login'>
-            <Button variant="contained">Login</Button>
-          </Link>
+          {user ?
+            <Link to='/explore'>
+              <Button variant='outlined' endIcon={<ArrowForwardIcon />}>Explore Projects</Button>
+            </Link> :
+            <>
+              <Link to='/signup'>
+                <Button variant='outlined'>Signup</Button>
+              </Link>
+              <Link to='/login'>
+                <Button variant="contained">Login</Button>
+              </Link>
+            </>
+          }
         </div>
       </section>
       {/* 
@@ -42,12 +49,12 @@ const Home = () => {
           </h2>
         </div>
         <div class="lg:w-[500px]">
-          <img src="/assets/confuse.png"  className='h-full w-full'alt="about" />
+          <img src="/assets/confuse.png" className='h-full w-full' alt="about" />
         </div>
       </section>
 
       <section
-        class="solution flex flex-col lg:flex-row-reverse justify-around items-center gap-6 lg:gap-20 p-8 lg:p-20 h-[80vh] my-6">
+        class="solution flex flex-col lg:flex-row-reverse justify-around items-center gap-4 lg:gap-20 p-8 lg:p-20 h-[80vh] my-6">
         <div class="lg:w-1/3 solution-info">
           <h2 class="text-2xl lg:text-left text-center lg:text-3xl font-bold">
             You are at right place <br />
@@ -80,14 +87,14 @@ const Home = () => {
           </h2>
         </div>
         <div class="lg:w-[500px]">
-          <img src="/assets/collab.png" a className='h-full w-full'lt="collab" />
+          <img src="/assets/collab.png" a className='h-full w-full' lt="collab" />
         </div>
       </section>
 
       <section class="explore text-center mb-8">
-          <Link to='/explore'>
-            <Button variant='contained' endIcon={<ArrowForwardIcon/>}>Explore Projects</Button>
-          </Link>
+        <Link to='/explore'>
+          <Button variant='contained' endIcon={<ArrowForwardIcon />}>Explore Projects</Button>
+        </Link>
       </section>
 
     </div>

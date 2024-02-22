@@ -3,6 +3,9 @@ import { useSelector } from 'react-redux';
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 import { db } from '../firebase-configs';
 import CardsContainer from '../components/CardsContainer'
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+import { Link } from 'react-router-dom';
 
 const Explore = () => {
   const [projects, setProjects] = useState([])
@@ -26,6 +29,14 @@ const Explore = () => {
     <div className='w-[80%] mx-auto'>
       <h1 className='my-16 text-3xl font-poppins font-medium'>Explore</h1>
       <CardsContainer projects={projects}/>
+      <div className='fixed bottom-12 hidden lg:block right-10'>
+        <Link to='/upload'>
+        <Fab variant="extended" color="primary" aria-label="add">
+          <AddIcon sx={{ mr: 1 }} />
+          Upload
+        </Fab>
+        </Link>
+      </div>
     </div>
   )
 }
