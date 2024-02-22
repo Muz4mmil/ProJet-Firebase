@@ -16,7 +16,7 @@ const Project = () => {
 
   const { projectId } = useParams()
   const [project, setProject] = useState()
-  const [projectOwner, setProjectOwner] = useState({})
+  const [projectOwner, setProjectOwner] = useState()
 
   const projectRef = doc(db, 'projects', projectId)
 
@@ -25,20 +25,20 @@ const Project = () => {
       const project = await getDoc(projectRef);
       const projectData = await project.data()
       setProject(projectData)
-
+      
       const userRef = doc(db, 'users', projectData.owner)
       const owner = await getDoc(userRef);
       const ownerData = await owner.data()
       setProjectOwner(ownerData)
     }
 
-    return () => unsubscribe();
+    unsubscribe();
   }, [])
 
 
   return (
     <div className='w-[80%] my-6 mx-auto'>
-      {project ? (
+      {project && projectOwner ? (
         <>
           <div className="images max-w-max my-6 flex gap-4 overflow-x-scroll">
             {project.projectImagesURLs.map((url, index) => (
