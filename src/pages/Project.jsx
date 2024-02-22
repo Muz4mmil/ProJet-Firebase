@@ -16,7 +16,7 @@ const Project = () => {
 
   const { projectId } = useParams()
   const [project, setProject] = useState()
-  const [projectOwner, setProjectOwner] = useState()
+  const [projectOwner, setProjectOwner] = useState({})
 
   const projectRef = doc(db, 'projects', projectId)
 

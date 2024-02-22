@@ -33,7 +33,7 @@ const UploadProject = () => {
       const docRef = await addDoc(projectRef, formData);
       console.log('Document written with ID: ', docRef.id);
       setTimeout(() => {
-        navigate(`/explore/project/${project.id}`)
+        navigate(`/explore/project/${docRef.id}`)
       }, 1000)
     } catch (e) {
       console.error('Error adding document: ', e);
