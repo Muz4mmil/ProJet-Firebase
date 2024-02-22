@@ -17,7 +17,6 @@ const ProjectCard = ({ project }) => {
 
   useEffect(() => {
     const unsubscribe = async () => {
-      console.log(user.uid);
       const userDocRef = doc(db, "users", user.uid);
       const docSnap = await getDoc(userDocRef);
       const docData = docSnap.data()

@@ -20,7 +20,6 @@ const Profile = () => {
   const projectsRef = collection(db, 'projects')
 
   useEffect(() => {
-    console.log('currentTab: ' + tab);
     if (user) {
       if (tab == 'mine') {
         const queryProjects = query(projectsRef, where('owner', '==', user.uid))
@@ -35,8 +34,6 @@ const Profile = () => {
         const unsubscribe = onSnapshot(userDocRef, async (docSnap) => {
           const docData = docSnap.data()
           const savedProjects = docData.saved
-          console.log('savedProjects');
-          console.log(savedProjects);
 
           let projects = []
           for (const projectId of savedProjects) {
@@ -46,7 +43,6 @@ const Profile = () => {
             projects.push({ id: projectId, ...ProjectdocData })
           }
           setProjects(projects)
-          console.log('end');
         })
         return () => unsubscribe()
       }

@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <header
-      className={`header bg-white w-full flex justify-between items-center py-4 lg:px-[10%] max-h-16 transition-all duration-500 lg:max-h-full ${isExpanded && 'max-h-96'}`}>
+      className={`header bg-white w-full flex justify-between items-center py-4 px-[10%] max-sm:px-0 max-h-16 transition-all duration-500 lg:max-h-full ${isExpanded && 'max-h-96'}`}>
       <div className="logo text-3xl font-bold w-max max-sm:text-center max-sm:w-full">{'<'}ProJet{' />'}</div>
 
       {/* <button className="lg:hidden max-sm:hidden col-span-1 justify-self-end"
@@ -25,7 +25,7 @@ const Header = () => {
       </button> */}
 
       <div class="nav-links z-10 bg-white max-sm:fixed max-sm:bottom-0 max-sm:z-10 max-sm:w-full max-sm:border-t">
-        <ul class="lg:flex max-sm:py-3 max-sm:flex max-sm:justify-evenly items-center lg:space-x-8 font-medium text-gray-900">
+        <ul class="flex max-sm:py-3 gap-2 flex max-sm:justify-evenly items-center lg:space-x-8 font-medium text-gray-900">
           <li  className=' max-sm:text-xs'><Link to={'/'}>
             <div className='text-center hidden max-sm:block'>
               <HomeIcon />
