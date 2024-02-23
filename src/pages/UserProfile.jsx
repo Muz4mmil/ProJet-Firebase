@@ -24,6 +24,7 @@ const UserProfile = () => {
     const userDocRef = doc(db, "users", uid);
     const getUser = onSnapshot(userDocRef, (docSnap) => {
       const userData = docSnap.data()
+      console.log(userData);
       setViewUser(userData)
     })
 
@@ -44,7 +45,7 @@ const UserProfile = () => {
         <div className='flex gap-16 max-sm:gap-10'>
           <div>
             <Avatar
-              alt="Remy Sharp"
+              alt="user"
               src={viewUser.photoURL}
               sx={{ width: '100px', height: '100px', fontSize: '40px' }}
             >{viewUser.displayName[0]}</Avatar>
@@ -52,12 +53,26 @@ const UserProfile = () => {
           <div className="user-info">
             {viewUser && (<>
               <h4 className='text-4xl font-bold'>{viewUser.displayName}</h4>
-              <h4 className='mt-2 text-xl'>{viewUser.email}</h4>
+              <h4 className='mt-2 break-all max-sm:text-xs'>{viewUser.email}</h4>
             </>)}
 
-            <Button variant='outlined' size='small' sx={{ width: 'max-content', margin: '20px 0' }}>
-              <ShareIcon sx={{ marginRight: '10px' }} /> Share Profile
-            </Button>
+            <div className='flex gap-2 item-center my-6'>
+              <ShareIcon/>
+              <Button
+                variant='outlined'
+                size='small'
+                sx={{ width: 'max-content' }}
+                onClick={(e) => {
+                  navigator.clipboard.writeText(`https://projet-app.web.app/profile/${viewUser.uid}`);
+                  e.target.innerHTML = 'Link Copied';
+                  setTimeout(() => {
+                    e.target.innerHTML = "Share Profile";
+                  }, 1500)
+                }}
+              >
+                Share Profile
+              </Button>
+            </div>
           </div>
         </div>
 

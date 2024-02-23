@@ -64,7 +64,8 @@ const Signup = () => {
           uid: user.uid,
           displayName: user.displayName,
           email: user.email,
-          saved: []
+          saved: [],
+          photoURL: user.photoURL
         })
 
         if(user){

@@ -57,7 +57,7 @@ const Profile = () => {
         <div className='flex gap-16 max-sm:gap-10'>
           <div>
             <Avatar
-              alt="Remy Sharp"
+              alt="User"
               src={user.photoURL}
               sx={{ width: '100px', height: '100px', fontSize: '40px' }}
             >{user.displayName[0]}</Avatar>
