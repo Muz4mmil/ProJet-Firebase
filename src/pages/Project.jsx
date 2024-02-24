@@ -9,6 +9,7 @@ import LinkIcon from '@mui/icons-material/Link';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import ShareIcon from '@mui/icons-material/Share';
+import EditIcon from '@mui/icons-material/Edit';
 import { Button } from '@mui/material';
 
 const Project = () => {
@@ -45,6 +46,20 @@ const Project = () => {
               <img key={index} src={url} className='max-h-72 object-cover mb-2' />
             ))}
           </div>
+
+          {projectOwner.uid == user.uid &&
+            <div className='mt-6'>
+              <Link to={`/edit/${projectId}`}>
+                <Button
+                  size='small'
+                  sx={{ width: 'max-content' }}
+                  startIcon={<EditIcon />}
+                >
+                  Edit Project
+                </Button>
+              </Link>
+            </div>
+          }
 
           <div className="info">
             <h1 className='my-4 text-3xl font-poppins font-medium'>{project.name}</h1>

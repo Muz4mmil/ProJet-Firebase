@@ -15,6 +15,7 @@ import Signup from './pages/Signup'
 import Project from './pages/Project';
 import Footer from './components/Footer';
 import Loader from './components/Loader'
+import EditProject from './pages/EditProject';
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ function App() {
           <Route path='/profile/:uid' element={<UserProfile />} />
           <Route path='/explore' element={<Explore />} />
           <Route path='/upload' element={<UploadProject />} />
+          <Route path='/edit/:projectId' element={<EditProject />} />
           <Route path='/explore/project/:projectId' element={<Project />} />
         </Routes>
         <Footer />

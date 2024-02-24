@@ -77,7 +77,7 @@ const ProjectForm = ({ formData, setFormData, handleSubmit }) => {
             onChange={handleChange}
           />
           <FormControl sx={{ my: 2 }}>
-            <FormLabel className='mt-4 mb-2'>Upload Project Images</FormLabel>
+            <FormLabel className='mt-4 mb-2'>Add Project Images</FormLabel>
             <FileUpload setFormData={setFormData} />
           </FormControl>
 
