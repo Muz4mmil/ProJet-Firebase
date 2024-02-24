@@ -2,6 +2,7 @@ import React from 'react'
 import Grid from '@mui/material/Grid';
 import ProjectCard from './ProjectCard'
 import { Link } from 'react-router-dom';
+import Loader from './Loader';
 
 
 const CardsContainer = ({ projects }) => {

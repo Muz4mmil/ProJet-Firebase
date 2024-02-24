@@ -14,7 +14,7 @@ import Header from './components/Header'
 import Signup from './pages/Signup'
 import Project from './pages/Project';
 import Footer from './components/Footer';
-import CircularProgress from '@mui/material/CircularProgress';
+import Loader from './components/Loader'
 
 function App() {
   const dispatch = useDispatch();
@@ -52,9 +52,10 @@ function App() {
       </BrowserRouter>
     </div> :
       <div className='h-[100dvh] w-full relative'>
-        <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+        {/* <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
           <CircularProgress/>
-        </div>
+        </div> */}
+        <Loader />
       </div>
   )
 }

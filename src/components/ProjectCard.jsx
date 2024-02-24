@@ -23,7 +23,7 @@ const ProjectCard = ({ project }) => {
       const isPresent = docData.saved.includes(project.id)
       setIsSaved(isPresent)
     }
-    return () => unsubscribe()
+    unsubscribe()
   }, [])
 
   const handleSave = async () => {

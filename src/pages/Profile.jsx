@@ -20,6 +20,7 @@ const Profile = () => {
   const projectsRef = collection(db, 'projects')
 
   useEffect(() => {
+    setProjects([])
     if (user) {
       if (tab == 'mine') {
         const queryProjects = query(projectsRef, where('owner', '==', user.uid))
