@@ -146,7 +146,9 @@ const ProjectForm = ({ formData, setFormData, handleSubmit }) => {
               >
                 <MenuItem value={'Software & IT'}>Software & IT</MenuItem>
                 <MenuItem value={'Mechanical'}>Mechanical</MenuItem>
-                <MenuItem value={'Electrical & ELectronics'}>Electrical & ELectronics</MenuItem>
+                <MenuItem value={'Electrical & ELectronics'}>Electrical & Electronics</MenuItem>
+                <MenuItem value={'Biotechnology'}>Biotechnology</MenuItem>
+                <MenuItem value={'Chemical Engineering'}>Chemical Engineering</MenuItem>
                 <MenuItem value={'Others'}>Others</MenuItem>
               </Select>
             </FormControl>
