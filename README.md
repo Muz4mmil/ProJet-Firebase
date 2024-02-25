@@ -1,8 +1,37 @@
-# React + Vite
+Certainly! Here's the updated README file for your ProJet platform:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# ProJet
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ProJet is a platform for students to showcase their projects and collaborate with others. It provides a centralized space for students to explore innovative project works from various fields.
+
+## Installation
+
+1. Clone the repository
+   ```sh
+   git clone https://github.com/your_username/projet.git
+   ```
+2. Install npm packages
+   ```sh
+   npm install
+   ```
+
+## Usage
+
+1. Run the development server
+   ```sh
+   npm run dev
+   ```
+2. Open provided localhost address to view it in the browser.
+
+## Technologies Used
+
+- React (Vite)
+- Firebase (Firebase Authentication, Firestore, Firebase Storage)
+- Material UI
+- Tailwind CSS
+
+## Contributing
+
+Contributions are always welcome! Feel free to fork and submit a pull request.
