@@ -1,7 +1,3 @@
-Certainly! Here's the updated README file for your ProJet platform:
-
----
-
 # ProJet
 
 ProJet is a platform for students to showcase their projects and collaborate with others. It provides a centralized space for students to explore innovative project works from various fields.
