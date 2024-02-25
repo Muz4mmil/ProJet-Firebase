@@ -10,7 +10,7 @@ ProJet is a platform for students to showcase their projects and collaborate wit
 
 1. Clone the repository
    ```sh
-   git clone https://github.com/your_username/projet.git
+   git clone https://github.com/Muz4mmil/Projet-Firebase.git
    ```
 2. Install npm packages
    ```sh
