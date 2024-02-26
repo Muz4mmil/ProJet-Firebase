@@ -41,7 +41,9 @@ const Profile = () => {
             const ProjectDocRef = doc(db, "projects", projectId);
             const ProjectdocSnap = await getDoc(ProjectDocRef);
             const ProjectdocData = ProjectdocSnap.data()
-            projects.push({ id: projectId, ...ProjectdocData })
+            if (ProjectdocData) {
+              projects.push({ id: projectId, ...ProjectdocData })
+            }
           }
           setProjects(projects)
         })
