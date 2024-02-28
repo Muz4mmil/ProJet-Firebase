@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div>
       <section id="hero"
-        className="hero shadow-sm mt-2 h-max flex flex-col justify-center text-center items-center gap-6 p-8 py-20 lg:p-24 w-[calc(100vw-24px)] lg:w-[calc(100vw-42px)] bg-white rounded-2xl m-auto">
+        className="hero bg-blue-50 shadow mt-2 h-max flex flex-col justify-center text-center items-center gap-6 p-8 py-20 lg:p-24 w-[calc(100vw-24px)] lg:w-[calc(100vw-42px)] bg-white rounded-2xl m-auto">
         <div className="hero-info flex flex-col justify-center">
           <h1 className="font-poppins text-5xl lg:text-5xl font-bold">Welcome to ProJet</h1>
           <h2 className="font-poppins text-3xl text-gray-500 mt-4 lg:text-5xl font-medium">Get Innovate, Build Unique, ShowOff</h2>

@@ -19,7 +19,7 @@ const Header = () => {
       <div className="logo text-3xl font-bold w-max max-sm:text-center max-sm:w-full">{'<'}ProJet{' />'}</div>
       
       <div className="nav-links z-10 bg-white max-sm:fixed max-sm:bottom-0 max-sm:z-10 max-sm:w-full max-sm:border-t">
-        <ul className="flex max-sm:py-3 gap-2 max-sm:justify-evenly items-center lg:space-x-8 font-medium text-gray-900">
+        <ul className="flex max-sm:py-3 gap-2 max-sm:justify-evenly items-center lg:space-x-8 font-medium font-poppins text-gray-900">
           <li  className=' max-sm:text-xs'><Link to={'/'}>
             <div className='text-center hidden max-sm:block'>
               <HomeIcon />

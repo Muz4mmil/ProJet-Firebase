@@ -47,7 +47,7 @@ const ProjectCard = ({ project }) => {
   }
 
   return (
-    <Card sx={{ maxWidth: 345, height: '100%', position: 'relative' }}>
+    <Card sx={{ maxWidth: 345, height: '100%', position: 'relative', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.1)', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)' }}>
       <CardMedia
         component="img"
         height="140"

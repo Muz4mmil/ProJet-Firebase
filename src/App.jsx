@@ -36,7 +36,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    isReady ? <div className='bg-slate-50 min-h-[100dvh] relative pb-20 max-sm:pb-24'>
+    isReady ? <div className=' bg-slate-50 min-h-[100dvh] relative pb-20 max-sm:pb-24'>
       <BrowserRouter>
         <Header />
         <Routes>
