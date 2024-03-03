@@ -76,10 +76,10 @@ const ProjectForm = ({ formData, setFormData, handleSubmit }) => {
             value={formData.description}
             onChange={handleChange}
           />
-          <FormControl sx={{ my: 2 }}>
+          {/* <FormControl sx={{ my: 2 }}>
             <FormLabel className='mt-4 mb-2'>Add Project Images</FormLabel>
             <FileUpload setFormData={setFormData} />
-          </FormControl>
+          </FormControl> */}
 
           <FormLabel id="demo-row-radio-buttons-group-label" className='mt-4'>Is it a Team Project?</FormLabel>
           <RadioGroup

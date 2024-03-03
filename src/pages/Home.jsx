@@ -20,7 +20,7 @@ const Home = () => {
         <div className="buttons mt-2 flex gap-4">
           {user ?
             <Link to='/explore'>
-              <Button variant='outlined' endIcon={<ArrowForwardIcon />}>Explore Projects</Button>
+              <Button variant='outlined' size='large' endIcon={<ArrowForwardIcon />}>Explore Projects</Button>
             </Link> :
             <>
               <Link to='/signup'>
@@ -93,7 +93,7 @@ const Home = () => {
 
       <section className="explore text-center mb-8">
         <Link to='/explore'>
-          <Button variant='contained' endIcon={<ArrowForwardIcon />}>Explore Projects</Button>
+          <Button variant='contained' size='large' endIcon={<ArrowForwardIcon />}>Explore Projects</Button>
         </Link>
       </section>
 

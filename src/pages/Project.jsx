@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { collection, doc, getDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-// import { ref, deleteObject } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+import { ref, deleteObject, listAll } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 import { db, storage } from '../firebase-configs';
 import PersonIcon from '@mui/icons-material/Person';
 import CategoryIcon from '@mui/icons-material/Category';
@@ -50,6 +50,15 @@ const Project = () => {
   const handleDelete = async () => {
     setDeleteLoading(true)
     await deleteDoc(projectRef);
+    await listAll(ref(storage, `projectImages/${projectId}`))
+      .then((res) => {
+        res.items.forEach((itemRef) => {
+          console.log(itemRef);
+          deleteObject(itemRef)
+        })
+      }).catch((error) => {
+        console.log(error.message);
+      });
     navigate(-1)
   }
 
